@@ -3,6 +3,7 @@ html, body{
 }
 body{
 	padding-top:50px;
+	font-family: sans-serif;
 }
 
 .navbar-default{
@@ -49,4 +50,20 @@ body{
 	border-color:#858687;
 	color: #fff;
 	margin-top: 25px
+}
+
+.panel-primary > .panel-heading {
+	background-color: #d33631;
+}
+
+.submit-button {
+	background-color: #d33631;
+}
+
+.login-panel {
+	font-size:17px
+}
+
+.submit-button {
+	font-size:17px
 }
