@@ -1,5 +1,5 @@
 angular
-    .module('app', [ 'ui.router','auth', 'authentication' ])
+    .module('app', [ 'ui.router','auth', 'authentication','navigation' ])
     .config(
         function($stateProvider,$urlRouterProvider,$httpProvider) {
         	$urlRouterProvider.otherwise("/")
