@@ -92,7 +92,7 @@ public class GradeTrackerApplication {
         .httpBasic()
       .and()
         .authorizeRequests()
-          .antMatchers("/index.html","/home.html","/","/login.html","/bower_components/**").permitAll()
+          .antMatchers("/index.html","/dashboard.html","/","/login.html","/bower_components/**","/js/**").permitAll()
           .anyRequest().authenticated().and()
           .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
           .csrf().csrfTokenRepository(csrfTokenRepository());
