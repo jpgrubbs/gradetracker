@@ -3,5 +3,7 @@ encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/static/bower_components/bootstrap/dist/css/custom.css=UTF-8
 encoding//src/main/resources/static/login.html=UTF-8
+encoding//src/main/resources/static/password-reset.html=UTF-8
+encoding//src/main/resources/static/user-registration.html=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

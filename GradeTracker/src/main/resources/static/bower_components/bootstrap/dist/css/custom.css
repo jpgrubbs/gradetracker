@@ -66,3 +66,13 @@ body{
 .submit-button {
 	font-size:17px
 }
+
+.logo {
+	padding: 15px 15px 0 0;
+	font-size: 20px;
+   font-weight: bold;
+}
+
+.etc-login-form {
+	margin-bottom: 10px;
+}
