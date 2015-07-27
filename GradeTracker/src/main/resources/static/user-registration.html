@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/custom.css" />
+  	</head>
+
+	<div class="text-center" style="padding:50px 0">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="panel panel-primary">
+						<div class="logo">User Registration</div>
+						<div class="panel-body">
+						
+						<form id="login-form" class="text-left" role="form" ng-submit="login()">
+							<div class="form-group"> 
+								<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="credentials.username"/>
+							</div>
+							
+							<div class="form-group">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="credentials.password"/>
+							</div>
+							
+							<div class="form-group">
+								<input type="password" class="form-control" id="confirm password" name="password-confirmation" placeholder="Confirm Password" ng-model="credentials.password"/>
+							</div>
+							
+							<div class="form-group">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Email" ng-model="credentials.password"/>
+							</div>
+							
+							<div class="form-group">
+								<input type="text" class="form-control" id="confirm email" name="email-confirmation" placeholder="Confirm Email" ng-model="credentials.password"/>
+							</div>
+							
+							<button type="submit" class="btn btn-primary btn-block submit-button">Register</button>		
+						</form>	
+						</div>	
+						<div class="etc-login-form">
+							<a href="href="/account/login">Already have an account?</a>
+						</div>				
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</html>
