@@ -3,7 +3,7 @@ angular.module('auth', []).factory(
 
 function($rootScope, $http, $location) {
   enter = function() {
-  if ($location.path() != auth.loginPath) {
+  if ($location.path() != auth.loginPath || $location.path() != auth.registerPath) {
     auth.path = $location.path();
     if (!auth.authenticated) {
       $location.path(auth.loginPath);
@@ -13,8 +13,8 @@ function($rootScope, $http, $location) {
   var auth = {
 
     authenticated : false,
-
-    loginPath : '/login',
+    registerPath: '/login/user-registration',
+    loginPath : '/login/registered',
     logoutPath : '/logout',
     homePath : '/',
 
@@ -26,7 +26,7 @@ function($rootScope, $http, $location) {
                 + credentials.password)
       } : {};
 
-      $http.get('user', {
+      $http.get('securityuser', {
         headers : headers
       }).success(function(data) {
         if (data.name) {
@@ -36,7 +36,6 @@ function($rootScope, $http, $location) {
         }
         $location.path(auth.homePath);
         callback && callback(auth.authenticated);
-        $location.path(auth.path==auth.loginPath ? auth.homePath : auth.path);
       }).error(function() {
         auth.authenticated = false;
         callback && callback(false);

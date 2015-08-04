@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/custom.css" />
-  	</head>
-
-	<div class="text-center" style="padding:50px 0">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<div class="panel panel-primary">
-						<div class="logo">User Registration</div>
-						<div class="panel-body">
-						
-						<form id="login-form" class="text-left" role="form" ng-submit="login()">
-							<div class="form-group"> 
-								<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="credentials.username"/>
-							</div>
-							
-							<div class="form-group">
-								<input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="credentials.password"/>
-							</div>
-							
-							<div class="form-group">
-								<input type="password" class="form-control" id="confirm password" name="password-confirmation" placeholder="Confirm Password" ng-model="credentials.password"/>
-							</div>
-							
-							<div class="form-group">
-								<input type="text" class="form-control" id="email" name="email" placeholder="Email" ng-model="credentials.password"/>
-							</div>
-							
-							<div class="form-group">
-								<input type="text" class="form-control" id="confirm email" name="email-confirmation" placeholder="Confirm Email" ng-model="credentials.password"/>
-							</div>
-							
-							<button type="submit" class="btn btn-primary btn-block submit-button">Register</button>		
-						</form>	
-						</div>	
-						<div class="etc-login-form">
-							<a href="href="/account/login">Already have an account?</a>
-						</div>				
-					</div>
-				</div>
+<div class="logo">User Registration</div>
+	<div class="panel-body" ng-controller="authentication">
+	
+	<form name="registrationForm" id="login-form" class="text-left" role="form" ng-submit="register()">
+		<div class="form-group"> 
+			<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="newuser.username" required/>
+			<div class="messages" ng-messages="registrationForm.username.$error">
+				<div ng-message="required">You did not enter a field</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="newuser.password" required ng-minlength="6"/>
+			<div class="messages" ng-messages="registrationForm.password.$error">
+				<div ng-message="required">You did not enter a field</div>
+				<div ng-message="minlength">Must be at least 6 characters long</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<input type="password" class="form-control" id="confirm password" name="confirmPassword" placeholder="Confirm Password" ng-model="confirmUser.password" 
+			required compare-to="newuser.password" ng-minlength="6"/>
+			<div class="messages" ng-messages="registrationForm.confirmPassword.$error">
+				<div ng-message="required">You did not enter a field</div>
+				<div ng-message="compareTo">Must match the previous entry</div>
+				<div ng-message="minlength">Must be at least 6 characters long</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="newuser.email" required/>
+			<div class="messages" ng-messages="registrationForm.email.$error">
+				<div ng-message="required">You did not enter a field</div>
+				<div ng-message="email">Not a valid email address</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<input type="email" class="form-control" id="confirm email" name="confirmEmail" placeholder="Confirm Email" ng-model="confirmUser.email" required compare-to="newuser.email"/>
+			<div class="messages" ng-messages="registrationForm.confirmEmail.$error">
+				<div ng-message="required">You did not enter a field</div>
+				<div ng-message="compareTo">Must match the previous entry</div>
+				<div ng-message="email">Not a valid email address</div>
 			</div>	
 		</div>
-	</div>
-</html>
+		
+		<button type="submit" class="btn btn-primary btn-block submit-button">Register</button>		
+	</form>	
+	</div>	
+	<div class="etc-login-form">
+		<a ui-sref="login.registered">Already have an account?</a>
+	</div>				

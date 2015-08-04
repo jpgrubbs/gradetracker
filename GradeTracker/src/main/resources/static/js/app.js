@@ -1,5 +1,5 @@
 angular
-    .module('app', [ 'ui.router','auth', 'authentication','navigation' ])
+    .module('app', [ 'ngMessages','ngResource','ui.router','auth', 'authentication','navigation' ])
     .config(
         function($stateProvider,$urlRouterProvider,$httpProvider) {
         	$urlRouterProvider.otherwise("/")
@@ -14,5 +14,16 @@ angular
              templateUrl: "login.html",
              controller: "authentication"
             })
+             .state('login.registered',{
+             url: "/registered",
+             templateUrl: "registered.html",
+             controller: "authentication"
+            })
+             .state('login.register',{
+             url: "/user-registration",
+             templateUrl: "user-registration.html",
+             controller: "authentication"
+            })
+             
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
         }).run(function(auth){auth.init();});

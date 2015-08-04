@@ -36,7 +36,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @ComponentScan
-@EnableJpaRepositories(basePackages = "com.gradetracker.repositories")
+@EnableJpaRepositories(basePackages = "com.gradetracker.repos")
 @EntityScan(basePackages = "com.gradetracker.models")
 @SpringBootApplication
 @RestController
@@ -66,7 +66,7 @@ public class GradeTrackerApplication {
     }
     
 	    
-  @RequestMapping("/user")
+  @RequestMapping("/securityuser")
   public Principal user(Principal user) {
     return user;
   }
@@ -92,8 +92,8 @@ public class GradeTrackerApplication {
         .httpBasic()
       .and()
         .authorizeRequests()
-          .antMatchers("/index.html","/dashboard.html","/","/login.html", "/password-reset.html", 
-        		  	   "/user-registration.html","/bower_components/**","/js/**")
+          .antMatchers("/**")/*"/index.html","/dashboard.html","/","/login.html", "/password-reset.html", 
+        		  	   "/user-registration.html","/bower_components/**","/js/**")*/
           .permitAll()
           .anyRequest().authenticated().and()
           .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)

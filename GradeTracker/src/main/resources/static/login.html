@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-   <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/custom.css" />
- </head>
- 
 <div class="alert alert-danger" ng-show="error">
 	There was a problem logging in. Please try again.
 </div>
@@ -14,31 +7,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<div class="panel panel-primary">
-					<div class="panel-body">
-					<form id="login-form" class="text-left" role="form" ng-submit="login()">
-						<div class="form-group"> 
-							<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="credentials.username"/>
-						</div>
-						
-						<div class="form-group">
-							<input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="credentials.password"/>
-						</div>
-						
-						<div class="form-group login-group-checkbox">
-				        	<input type="checkbox" id="lg_remember" name="lg_remember" value="1"/>
-				        	<label for="lg_remember">Remember me · </label>
-				    		
-				    		<a href="/account/password-reset">
-				        		Forgot password? · 
-				    		</a>
-				    		
-				    		<a href="/account/user-registration">
-				        		Register
-				    		</a>				    		
-				    	</div> 	
-						<button type="submit" class="btn btn-primary btn-block submit-button">Log in</button>					
-					</form>				
-					</div>		
+				   <div ui-view></div>		
 				</div>
 			</div>
 		</div>	

@@ -1,0 +1,25 @@
+<div class="panel-body">
+<form id="login-form" class="text-left" role="form" ng-submit="login()">
+	<div class="form-group"> 
+		<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="credentials.username" required/>
+	</div>
+	
+	<div class="form-group">
+		<input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="credentials.password" required/>
+	</div>
+	
+	<div class="form-group login-group-checkbox">
+       	<input type="checkbox" id="lg_remember" name="lg_remember" value="1"/>
+       	<label for="lg_remember">Remember me</label>
+   		
+   		<a href="/account/password-reset">
+       		Forgot password? 
+   		</a>
+   		
+   		<a ui-sref="login.register">
+       		Register
+   		</a>				    		
+   	</div> 	
+	<button type="submit" class="btn btn-primary btn-block submit-button">Log in</button>					
+</form>				
+</div>
