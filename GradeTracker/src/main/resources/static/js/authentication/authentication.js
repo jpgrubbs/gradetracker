@@ -25,8 +25,16 @@ function($scope, auth, User) {
 	$scope.register = function() {
 		console.log("registering " + $scope.newuser.username);
 		$scope.newuser.enabled = 1;
-		$scope.newuser.$save();
-	    };
+		$scope.credentials = angular.copy($scope.newuser)//This is because password gets wiped on save success.
+		$scope.newuser.$save(function(data)
+		{
+			$scope.login();
+		}, function(err)
+		{
+			alert('request failed');
+		});
+		
+	};
 
 	$scope.logout = function() {
       auth.clear();
@@ -50,7 +58,23 @@ function($scope, auth, User) {
         });
       }
     };
-}).factory('User',['$resource', function($resource)
+}).directive('uniqueUsername',['$http', function($http) {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+             element.bind('blur', function (e) {
+                  ngModel.$loading = true;
+
+                  $http.get("/user/" + element.val()).success(function(data) {
+                	 console.log(data);
+                     ngModel.$loading = false;
+                     ngModel.$setValidity('unique', data.length == 0);
+                  });
+             });
+        }
+   };
+}]).factory('User',['$resource', function($resource)
 	{
 	return $resource('/user/:username', {
 	      username: '@username'

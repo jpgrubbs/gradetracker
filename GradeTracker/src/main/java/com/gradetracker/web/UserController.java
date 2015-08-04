@@ -1,12 +1,14 @@
 package com.gradetracker.web;
 
+import java.util.List;
+
 import com.gradetracker.models.User;
 import com.gradetracker.repos.UserRepository;
 import com.gradetracker.models.Authority;
 import com.gradetracker.repos.AuthorityRepository;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +30,12 @@ public class UserController {
 	User ret = repo.saveAndFlush(user);
 	authRepo.saveAndFlush(auth);
 	return ret;
+  }
+  
+  @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+  public List<User> getUser(@PathVariable String username){
+	List<User> user = repo.findByUsername(username);
+	return user;
   }
   
 }

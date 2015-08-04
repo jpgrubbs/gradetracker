@@ -3,9 +3,10 @@
 	
 	<form name="registrationForm" id="login-form" class="text-left" role="form" ng-submit="register()">
 		<div class="form-group"> 
-			<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="newuser.username" required/>
+			<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="newuser.username" required unique-username=""/>
 			<div class="messages" ng-messages="registrationForm.username.$error">
 				<div ng-message="required">You did not enter a field</div>
+				<div ng-message="unique">Username taken</div>
 			</div>
 		</div>
 		
